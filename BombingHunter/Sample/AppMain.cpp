@@ -43,7 +43,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			scene->Draw();
 
 			//— ‰æ–Ê‚Ì“à—e‚ð•\‰æ–Ê‚É”½‰f‚·‚é
-			ScereenFlip();
+			ScreenFlip();
 		}
 	}
 	catch (const char* error_log)

@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-#include "../Object/Player/Player.h"
+#include "../Objects/Player/Player.h"
 
 //コンストラクタ
 Scene::Scene() :objects()
@@ -23,7 +23,41 @@ void Scene::Initialize()
 }
 
 //更新処理
+void Scene::Update()
+{
+	//シーンに存在するオブジェクトの描画処理
+	for (GameObject* obj : objects)
+	{
+		obj->Update();
+	}
+}
+
+//描画処理
 void Scene::Draw() const
 {
 	//シーンに存在するオブジェクトの描画処理
+	for (GameObject* obj : objects)
+	{
+		obj->Drow();
+	}
+}
+
+//終了時処理
+void Scene::Finalize()
+{
+	//動的配列がからなら処理を終了する
+	if (objects.empty())
+	{
+		return;
+	}
+
+	//各オブジェクトを削除する
+	for (GameObject* obj : objects)
+	{
+		obj->Finalize();
+		delete obj;
+	}
+
+	//動的配列の開放
+	objects.clear();
 }
