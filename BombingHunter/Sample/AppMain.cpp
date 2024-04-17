@@ -36,6 +36,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			//入力機能の更新
 			InputControl::Update();
 
+			//シーンの更新処理
+			scene->Update();
+
 			//画面の初期化
 			ClearDrawScreen();
 
@@ -55,7 +58,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	}
 
 	//シーン情報を削除する
-	if (scene != nullptr);
+	if (scene != nullptr)
 	{
 		scene->Finalize();
 		delete scene;

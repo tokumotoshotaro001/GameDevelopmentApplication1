@@ -38,7 +38,7 @@ void Scene::Draw() const
 	//シーンに存在するオブジェクトの描画処理
 	for (GameObject* obj : objects)
 	{
-		obj->Drow();
+		obj->Draw();
 	}
 }
 

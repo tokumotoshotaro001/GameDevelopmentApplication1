@@ -41,7 +41,7 @@ private:
 		new_object->SetLocation(location);
 
 		//オブジェクトリストの追加
-		object.push_back(new_object);
+		objects.push_back(new_object);
 
 		//インスタンスのポインタを返却
 		return new_instance;

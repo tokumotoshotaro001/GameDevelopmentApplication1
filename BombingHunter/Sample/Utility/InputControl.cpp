@@ -2,7 +2,7 @@
 #include "DxLib.h"
 
 char InputControl::now_key[D_KEYCODE_MAX] = {};
-char InputControl::now_key[D_KEYCODE_MAX] = {};
+char InputControl::old_key[D_KEYCODE_MAX] = {};
 
 void InputControl::Update()
 {

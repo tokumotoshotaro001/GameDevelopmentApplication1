@@ -25,7 +25,7 @@ public:
 	virtual void OnHitCollision(GameObject* hit_object);
 
 	//ˆÊ’uî•ñæ“¾ˆ—
-	Vector2D GetLocation();
+	Vector2D GetLocation() const;
 	//ˆÊ’uî•ñ•ÏXˆ—
 	void SetLocation(const Vector2D& location);
 };

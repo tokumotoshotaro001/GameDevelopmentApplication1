@@ -33,36 +33,36 @@
     <ClCompile Include="AppMain.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="InputControl.cpp">
+    <ClCompile Include="Utility\InputControl.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
+    <ClCompile Include="Utility\Vector2D.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="Scene\Scene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
+    <ClCompile Include="Objects\GameObject.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="Objects\Player\Player.cpp">
       <Filter>Objects\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="InputControl.h">
+    <ClInclude Include="Utility\InputControl.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
+    <ClInclude Include="Utility\Vector2D.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="Scene\Scene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="Objects\GameObject.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="Objects\Player\Player.h">
       <Filter>Objects\Player</Filter>
     </ClInclude>
   </ItemGroup>

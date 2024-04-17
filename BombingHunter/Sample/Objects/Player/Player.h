@@ -6,7 +6,7 @@ class Player : public GameObject
 {
 private:
 	int animation[2];
-	int animation_const;
+	int animation_count;
 	int filp_flag;
 
 public:
@@ -25,6 +25,6 @@ private:
 	//移動処理
 	void Movement();
 	//アニメーション制御
-	void AnimeControl();
+	void AnimationControl();
 };
 

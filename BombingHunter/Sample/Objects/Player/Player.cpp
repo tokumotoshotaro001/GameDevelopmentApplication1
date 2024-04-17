@@ -19,8 +19,8 @@ Player::~Player()
 void Player::Initialize()
 {
 	//画像の読み込み
-	animation[0] = LoadGraph("Resource/Images/Tri-pilot/1.png");
-	animation[1] = LoadGraph("Resource/Images/Tri-pilot/1.png");
+	animation[0] = LoadGraph("Resource/Images/飛ぶ1.png");
+	animation[1] = LoadGraph("Resource/Images/飛ぶ2.png");
 
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
@@ -29,9 +29,9 @@ void Player::Initialize()
 	}
 
 	//向きの設定
-	radian = 0.0;
+	radian = 0.0f;
 
-	//大きさの設定
+	//当たり判定の大きさを設定
 	scale = 64.0f;
 
 	//初期画像の設定
@@ -44,21 +44,21 @@ void Player::Update()
 	//移動処理
 	Movement();
 	//アニメーション制御
-	AnimeControl();
+	AnimationControl();
 }
 
 //描画処理
 void Player::Draw() const
 {
 	//プレイヤー画像の描画
-	DwarRotaGraphF(location.x, location.y, 1.0, radian, image, TRUE, filp_flag);
+	DrawRotaGraphF(location.x, location.y, 1.0, radian, image, TRUE, filp_flag);
 
 //デバッグ用
-#if_DEBUG
+#if _DEBUG
 	//当たり判定の可視化
-	Vector2D box_collision_upper_left = location - (Vector2D(1.0f) * (float)scale / 2.0f);
-	Vector2D box_collision_lower_right = location + (Vector2D(1.0f) * (float)scale / 2.0f);
-	DrawBoxAA(box_collision_upper_left.x, box_collision_upper_left.y, box_collision_lower_right.x, box_collision_lower_right.y, GetColor(255, 0, 0), FALSE);
+	Vector2D ul= location - (scale / 2.0f);
+	Vector2D br = location + (scale / 2.0f);
+	DrawBoxAA(ul.x, ul.y, br.x, br.y, GetColor(255, 0, 0), FALSE);
 #endif
 }
 
@@ -102,13 +102,13 @@ void Player::Movement()
 }
 
 //アニメーション制御
-void Player::AnimeControl()
+void Player::AnimationControl()
 {
 	//フレームカウントを加算する
 	animation_count++;
 
 	//60フレーム目に到達したら
-	if (animation_count >= 60)
+	if (animation_count >= 6)
 	{
 		//カウントのリセット
 		animation_count = 0;

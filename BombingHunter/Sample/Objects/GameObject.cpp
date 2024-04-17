@@ -56,5 +56,5 @@ Vector2D GameObject::GetLocation() const
 //ˆÊ’uî•ñÝ’èˆ—
 void GameObject::SetLocation(const Vector2D& location)
 {
-	this->GetLocation = location;
+	this->location = location;
 }
