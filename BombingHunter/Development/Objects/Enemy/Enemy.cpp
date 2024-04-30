@@ -27,7 +27,6 @@
 //}
 
 #include "Enemy.h"
-#include "../../Utility/InputControl.h"
 #include "DxLib.h"
 
 //コンストラクタ
@@ -79,7 +78,7 @@ void Enemy::Update()
 void Enemy::Draw() const
 {
 	//プレイヤー画像の描画
-	DrawRotaGraphF(location.x, location.y, 1.0, radian, image, TRUE, filp_flag);
+	DrawRotaGraphF(location.x, location.y, 0.5, radian, image, TRUE, filp_flag);
 
 	//デバッグ用
 #if _DEBUG
@@ -110,21 +109,7 @@ void Enemy::Movement()
 	//移動の速さ
 	Vector2D velocity = 0.0f;
 
-	//左右の速さ
-	if (InputControl::GetKey(KEY_INPUT_LEFT))
-	{
-		velocity.x += -1.0f;
-		filp_flag = TRUE;
-	}
-	else if (InputControl::GetKey(KEY_INPUT_RIGHT))
-	{
-		velocity.x += 1.0f;
-		filp_flag = FALSE;
-	}
-	else
-	{
-		velocity.x += 0.0f;
-	}
+	velocity.x = 1.0;
 	//現在の位置座標に速さを加算する
 	location += velocity;
 }

@@ -1,6 +1,6 @@
 #include "Scene.h"
-
 #include "../Objects/Player/Player.h"
+#include "../Objects/Enemy/Enemy.h"
 
 //コンストラクタ
 Scene::Scene() :objects()
@@ -19,7 +19,8 @@ Scene::~Scene()
 void Scene::Initialize()
 {
 	//プレイヤーを生成する
-	CreateObject<Player>(Vector2D(320.0f, 240.0f));
+	CreateObject<Enemy>(Vector2D(-10.0f, 400.0f));
+	CreateObject<Player>(Vector2D(320.0f, 70.0f));
 }
 
 //更新処理
