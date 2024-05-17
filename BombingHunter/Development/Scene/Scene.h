@@ -19,6 +19,7 @@ public:
 	void Finalize();
 
 private:
+	void HitCheckObject(GameObject* a, GameObject* b);
 	//オブジェクト生成処理
 	template <class T>
 	T* CreateObject(const Vector2D& location)
