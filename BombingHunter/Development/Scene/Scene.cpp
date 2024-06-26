@@ -1,6 +1,8 @@
 #include "Scene.h"
 #include "../Objects/Player/Player.h"
 #include "../Objects/Enemy/Enemy.h"
+#include "../Objects/Enemy/Enemy_hane.h"
+#include "../Objects/Enemy/Harpy.h"
 #include "../Utility/InputControl.h"
 #include "DxLib.h"
 
@@ -9,7 +11,7 @@
 //コンストラクタ
 Scene::Scene() :objects()
 {
-
+	
 }
 
 //デストラクタ
@@ -22,8 +24,13 @@ Scene::~Scene()
 //初期化処理
 void Scene::Initialize()
 {
+	back_image = LoadGraph("Resource/Images/背景2.png");
+
 	//プレイヤーを生成する
 	CreateObject<Player>(Vector2D(320.0f, 70.0f));
+	CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
+	CreateObject<Enemy_hane>(Vector2D(100.0f, 200.0f));
+	CreateObject<Harpy>(Vector2D(100.0f, 280.0f));
 }
 
 //更新処理
@@ -43,15 +50,17 @@ void Scene::Update()
 		}
 	}
 
-	if (InputControl::GetKeyDown(KEY_INPUT_Z))
+	/*if (InputControl::GetKeyDown(KEY_INPUT_Z))
 	{
 		CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
-	}
+	}*/
 }
 
 //描画処理
 void Scene::Draw() const
 {
+	DrawRotaGraph(300.0, 130.0, 1.0,0.0, back_image, TRUE);
+
 	//シーンに存在するオブジェクトの描画処理
 	for (GameObject* obj : objects)
 	{

@@ -1,30 +1,30 @@
-#include "Enemy.h"
+#include "Harpy.h"
 #include "DxLib.h"
 
 //コンストラクタ
-Enemy::Enemy() : animation_count(0), direction(0.0f)
+Harpy::Harpy() : animation_count(0), direction(0.0f)
 {
 	animation[0] = NULL;
 	animation[1] = NULL;
 }
 
 //デストラクタ
-Enemy::~Enemy()
+Harpy::~Harpy()
 {
 
 }
 
 //初期化処理
-void Enemy::Initialize()
+void Harpy::Initialize()
 {
 	//画像の読み込み
-	animation[0] = LoadGraph("Resource/Images/ハコテキ1.png");
-	animation[1] = LoadGraph("Resource/Images/ハコテキ2.png");
+	animation[0] = LoadGraph("Resource/Images/ハーピー1.png");
+	animation[1] = LoadGraph("Resource/Images/ハーピー2.png");
 
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
 	{
-		throw("ハコテキの画像がありません\n");
+		throw("ハーピーの画像がありません\n");
 	}
 
 	//向きの設定
@@ -37,11 +37,11 @@ void Enemy::Initialize()
 	image = animation[0];
 
 	//初期進行方向の描画
-	direction = Vector2D(1.0f,-0.5f);
+	direction = Vector2D(1.0f, -0.5f);
 }
 
 //更新処理
-void Enemy::Update()
+void Harpy::Update()
 {
 	//移動処理
 	Movement();
@@ -50,7 +50,7 @@ void Enemy::Update()
 }
 
 //描画処理
-void Enemy::Draw() const
+void Harpy::Draw() const
 {
 	//画像反転フラグ
 	int flip_flag = FALSE;
@@ -71,7 +71,7 @@ void Enemy::Draw() const
 }
 
 //終了時処理
-void Enemy::Finalize()
+void Harpy::Finalize()
 {
 	//使用した画像を解放する
 	DeleteGraph(animation[0]);
@@ -79,7 +79,7 @@ void Enemy::Finalize()
 }
 
 //当たり判定通知処理
-void Enemy::OnHitCollision(GameObject* hit_object)
+void Harpy::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時の処理
 	direction = 0.0f;
@@ -87,31 +87,25 @@ void Enemy::OnHitCollision(GameObject* hit_object)
 }
 
 //移動処理
-void Enemy::Movement()
+void Harpy::Movement()
 {
-	location.x += 1.0f;
-
-	/*if (location.x >= 640.0f)
-	{
-		direction.x *= -1.0f;
-	}*/
+	location.x += 1.0;
 	//画面端に到達したら、進行方向を反転する
-	/*if (((location.x + direction.x) < box_size.x) || (640.0f - box_size.x) < (location.x + direction.x))
-	{
-		direction.x *= -1.0f;
-		location.x -= 1.0f;
-	}*/
+	//if (((location.x + direction.x) < box_size.x) || (640.0f - box_size.x) < (location.x + direction.x))
+	//{
+	//	direction.x *= -1.0f;
+	//}
 	///*if (((location.y + direction.y) < box_size.y) || (480.0f - box_size.y) < (location.x + direction.y))
 	//{
 	//	direction.y *= -1.0f;
 	//}*/
 	////現在の位置座標に速さを加算する
 	//location += direction;
-	
+
 }
 
 //アニメーション制御
-void Enemy::AnimationControl()
+void Harpy::AnimationControl()
 {
 	//フレームカウントを加算する
 	animation_count++;
