@@ -3,13 +3,15 @@
 #include "../Objects/Enemy/Enemy.h"
 #include "../Objects/Enemy/Enemy_hane.h"
 #include "../Objects/Enemy/Harpy.h"
+#include "../Bullet/Bullet.h"
 #include "../Utility/InputControl.h"
 #include "DxLib.h"
 
 #define D_PIVOT_CENTER
+#define enemy ()
 
 //コンストラクタ
-Scene::Scene() :objects()
+Scene::Scene() :objects(),frame(0),count(), count1(), count2(), count3(), Enemy_count(4), Enemy_count1(4), Enemy_count2(4),cha(),cha1()
 {
 	
 }
@@ -28,32 +30,120 @@ void Scene::Initialize()
 
 	//プレイヤーを生成する
 	CreateObject<Player>(Vector2D(320.0f, 70.0f));
-	CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
-	CreateObject<Enemy_hane>(Vector2D(100.0f, 200.0f));
-	CreateObject<Harpy>(Vector2D(100.0f, 280.0f));
+	
+	//ハコテキの確率
+	count = GetRand(100);
+
+	//ハネテキの確立
+	count1 = GetRand(100);
+
+	//ハーピーの確立
+	count2 = GetRand(100);
+
+
 }
 
 //更新処理
 void Scene::Update()
 {
+	frame++;
+
+	//テキ生成
+	if (frame>=180)
+	{
+		//ハコテキ生成
+		if (Enemy_count > 0)
+		{
+			if (count <= 40)
+			{
+				CreateObject<Enemy>(Vector2D(0.0f, 390.0f));
+			}
+		}
+
+		//ハネテキ生成
+		if (Enemy_count1 > 0)
+		{
+			if (count1 <= 30)
+			{
+				if (cha == 0)
+				{
+					CreateObject<Enemy_hane>(Vector2D(0.0f, 120.0f));
+				}
+				else if (cha == 1)
+				{
+					CreateObject<Enemy_hane>(Vector2D(0.0f, 200.0f));
+				}
+				else if (cha == 2)
+				{
+					CreateObject<Enemy_hane>(Vector2D(0.0f, 260.0f));
+				}
+				Enemy_count1--;
+			}
+		}
+
+		//ハーピー生成
+		if (Enemy_count2 > 0)
+		{
+			if (count1 <= 50)
+			{
+				if (cha == 0)
+				{
+					CreateObject<Harpy>(Vector2D(0.0f, 200.0f));
+				}
+				else if (cha == 1)
+				{
+					CreateObject<Harpy>(Vector2D(0.0f, 120.0f));
+				}
+				else if (cha == 2)
+				{
+					CreateObject<Harpy>(Vector2D(0.0f, 260.0f));
+				}
+				Enemy_count2--;
+			}
+		}
+
+		count = GetRand(100);
+		count1 = GetRand(100);
+		count2 = GetRand(100);
+
+		cha = GetRand(2);
+		cha1 = GetRand(2);
+
+		frame = 0;
+	}
+
 	//シーンに存在するオブジェクトの描画処理
 	for (GameObject* obj : objects)
 	{
 		obj->Update();
 	}
 
+	//当たり判定チェック
 	for (int i = 0; i < objects.size(); i++)
 	{
 		for (int j = i + 1; j < objects.size(); j++)
 		{
-			HitCheckObject(objects[i], objects[j]);
+			if (objects[i]->GetType() != objects[j]->GetType())
+			{
+				HitCheckObject(objects[i], objects[j]);
+			}
 		}
 	}
 
-	/*if (InputControl::GetKeyDown(KEY_INPUT_Z))
+	//オブジェクト消去
+	/*for (int i = 0; i < objects.size(); i++)
 	{
-		CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
+		if (objects[i]->GetType() == true)
+		{
+			DeleteObject<Enemy>(Vector2D(0.0f, 390.0f));
+		}
 	}*/
+
+	//弾を出す処理
+	if (InputControl::GetKeyDown(KEY_INPUT_Z))
+	{
+		CreateObject<Bullet>(objects[0]->GetLocation());
+	}
 }
 
 //描画処理

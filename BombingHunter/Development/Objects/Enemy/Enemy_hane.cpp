@@ -83,7 +83,7 @@ void Enemy_hane::OnHitCollision(GameObject* hit_object)
 {
 	//“–‚½‚Á‚½‚Ìˆ—
 	direction = 0.0f;
-	DeleteObject;
+	/*DeleteObject;*/
 }
 
 //ˆÚ“®ˆ—

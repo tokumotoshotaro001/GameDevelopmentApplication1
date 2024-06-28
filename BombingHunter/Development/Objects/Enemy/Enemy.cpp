@@ -38,6 +38,8 @@ void Enemy::Initialize()
 
 	//初期進行方向の描画
 	direction = Vector2D(1.0f,-0.5f);
+
+	type = enemy;
 }
 
 //更新処理
@@ -83,7 +85,7 @@ void Enemy::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時の処理
 	direction = 0.0f;
-	DeleteObject;
+	/*DeleteObject;*/
 }
 
 //移動処理
@@ -106,7 +108,7 @@ void Enemy::Movement()
 	//	direction.y *= -1.0f;
 	//}*/
 	////現在の位置座標に速さを加算する
-	//location += direction;
+	/*location += direction;*/
 	
 }
 

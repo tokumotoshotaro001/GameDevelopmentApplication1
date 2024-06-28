@@ -88,6 +88,7 @@ void Player::Movement()
 		velocity.x += -1.0f;
 		filp_flag = TRUE;
 	}
+
 	else if (InputControl::GetKey(KEY_INPUT_RIGHT))
 	{
 		velocity.x += 1.0f;

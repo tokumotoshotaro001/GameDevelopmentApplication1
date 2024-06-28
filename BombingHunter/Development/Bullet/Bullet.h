@@ -25,7 +25,7 @@ public:
 
     //‚ —L”»’è’Ê’mˆ—
     virtual void OnHitCollision(GameObject* hit_object) override;
-  /*  virtual bool  DeleteObject()  override;*/
+   /* virtual bool  DeleteObject()  override;*/
 
 private:
     //ˆÚ“®ˆ—

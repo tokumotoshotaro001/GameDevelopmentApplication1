@@ -3,6 +3,11 @@
 #include "../Utility/Vector2D.h"
 
 #define D_PIVOT_CENTER
+#define enemy (20)
+#define enemy_hane (30)
+#define harpy (50)
+#define enemy_bullet (60)
+
 
 //ゲームオブジェクト基底クラス
 class GameObject
@@ -13,6 +18,7 @@ protected:
 	double radian;
 	int image;
 	int sound;
+	int type;
 
 public:
 	GameObject();
@@ -33,5 +39,11 @@ public:
 
 	//当たり判定の大きさを取得する
 	Vector2D GetBoxSize() const;
+
+	int GetType();
+
+	void SetType(int object_type);
+
+	virtual bool DeleteObject();
 };
 

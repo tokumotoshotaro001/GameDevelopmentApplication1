@@ -25,7 +25,7 @@ void Bullet::Initialize()
     //初期画像の設定
     image = images;
 
-    //初期振興報告の設定
+    //初期進行方向の設定
     if (InputControl::GetKey(KEY_INPUT_LEFT))
     {
         radian = 2.0;
@@ -58,11 +58,11 @@ void Bullet::Draw()const
 {
 
     //爆弾画像の描画
-    DrawRotaGraphF(location.x, location.y, 0.04, radian, image, TRUE, 0);
+    DrawRotaGraphF(location.x, location.y, 0.3, radian, image, TRUE, 0);
 
-    //でバック用
+    //デバッグ用
 #if _DEBUG
-    //当たり判定のかしか
+    //当たり判定の可視化
     Vector2D box_collision_upper_left = location - (box_size / 2.0f);
     Vector2D box_collision_lower_right = location + (box_size / 2.0f);
 
@@ -105,7 +105,7 @@ void Bullet::OnHitCollision(GameObject* hit_object)
 //移動処理
 void Bullet::Movement()
 {
-    //sitaへ移動し続ける
+    //下へ移動し続ける
     location += direction;
 
 }

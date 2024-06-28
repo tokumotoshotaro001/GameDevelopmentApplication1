@@ -4,10 +4,21 @@
 #include <string>
 #include "../Objects/GameObject.h"
 
-class Scene
+class Scene :public GameObject
 {
 private:
 	int back_image;
+	int frame;
+	int count;
+	int count1;
+	int count2;
+	int count3;
+	int Enemy_count;
+	int Enemy_count1;
+	int Enemy_count2;
+	int cha;
+	int cha1;
+
 
 	std::vector<GameObject*> objects;
 
@@ -48,6 +59,8 @@ private:
 
 		//インスタンスのポインタを返却
 		return new_instance;
+
+		bool DeleteObject();
 	}
 };
 

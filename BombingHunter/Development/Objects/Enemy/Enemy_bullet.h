@@ -6,7 +6,6 @@ class Enemy_bullet : public GameObject
 private:
     int images;
     int scale;
-    int type= enemy_bullet;
 private:
     //int animation[2];  //アニメーション画像
     //int animation_count; //アニメーション時間
