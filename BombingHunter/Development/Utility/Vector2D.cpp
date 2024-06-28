@@ -1,4 +1,4 @@
-#include "Vector2D.h"
+#include"Vector2D.h"
 #include <math.h>
 
 Vector2D::Vector2D() :x(0.0f), y(0.0f)
@@ -151,7 +151,7 @@ Vector2D& Vector2D::operator/=(const Vector2D& location)
 	return *this;
 }
 
-void Vector2D::ToInt(int* x, int* y)
+void Vector2D::ToInt(int* x, int* y) const
 {
 	*x = static_cast<int>(this->x);
 	*y = static_cast<int>(this->y);

@@ -6,14 +6,17 @@
 #include "../Bullet/Bullet.h"
 #include "../Utility/InputControl.h"
 #include "DxLib.h"
+#include"../Utility/Vector2D.h"
 
 #define D_PIVOT_CENTER
-#define enemy ()
 
 //コンストラクタ
 Scene::Scene() :objects(),frame(0),count(), count1(), count2(), count3(), Enemy_count(4), Enemy_count1(4), Enemy_count2(4),cha(),cha1()
 {
-	
+	for (int i = 0; i < 2; i++)
+	{
+		BGM[i] = NULL;
+	}
 }
 
 //デストラクタ
@@ -26,6 +29,12 @@ Scene::~Scene()
 //初期化処理
 void Scene::Initialize()
 {
+	//BGM生成
+	BGM[0] = LoadSoundMem("Resource/Images/BGM_arrows.wav");
+
+	//BGM再生処理
+	PlaySoundMem(BGM[0], DX_PLAYTYPE_LOOP, TRUE);
+
 	back_image = LoadGraph("Resource/Images/背景2.png");
 
 	//プレイヤーを生成する
@@ -135,7 +144,7 @@ void Scene::Update()
 	{
 		if (objects[i]->GetType() == true)
 		{
-			DeleteObject<Enemy>(Vector2D(0.0f, 390.0f));
+			DeleteObject;
 		}
 	}*/
 
@@ -144,6 +153,8 @@ void Scene::Update()
 	{
 		CreateObject<Bullet>(objects[0]->GetLocation());
 	}
+
+	
 }
 
 //描画処理
@@ -176,6 +187,9 @@ void Scene::Finalize()
 
 	//動的配列の開放
 	objects.clear();
+
+	//BGM削除処理
+	DeleteSoundMem(BGM[0]);
 }
 
 #ifdef D_PIVOT_CENTER

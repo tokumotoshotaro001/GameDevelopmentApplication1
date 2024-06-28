@@ -7,6 +7,7 @@
 class Scene :public GameObject
 {
 private:
+	int BGM[2];
 	int back_image;
 	int frame;
 	int count;

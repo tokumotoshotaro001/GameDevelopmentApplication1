@@ -14,7 +14,7 @@ public:
 public:
 	Vector2D& operator = (const Vector2D& location);
 
-	const Vector2D operator + (const Vector2D & location) const;
+	const Vector2D operator + (const Vector2D& location) const;
 	Vector2D& operator += (const Vector2D& location);
 
 	const Vector2D operator - (const Vector2D& location) const;
@@ -30,6 +30,6 @@ public:
 	Vector2D& operator /= (const float& scalar);
 	Vector2D& operator /= (const Vector2D& location);
 
-	void ToInt(int* x, int* y);
+	void ToInt(int* x, int* y) const;
 };
 

@@ -3,11 +3,9 @@
 #include "../Utility/Vector2D.h"
 
 #define D_PIVOT_CENTER
-#define enemy (20)
-#define enemy_hane (30)
-#define harpy (50)
-#define enemy_bullet (60)
-
+//#define ENEMTY (20)
+//#define ENEMY_HANE (30)
+//#define HARPY (40)
 
 //ゲームオブジェクト基底クラス
 class GameObject
