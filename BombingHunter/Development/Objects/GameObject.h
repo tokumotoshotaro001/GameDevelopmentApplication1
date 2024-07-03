@@ -3,9 +3,6 @@
 #include "../Utility/Vector2D.h"
 
 #define D_PIVOT_CENTER
-//#define ENEMTY (20)
-//#define ENEMY_HANE (30)
-//#define HARPY (40)
 
 //ゲームオブジェクト基底クラス
 class GameObject

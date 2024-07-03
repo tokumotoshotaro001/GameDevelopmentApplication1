@@ -225,3 +225,4 @@ void Scene::HitCheckObject(GameObject* a, GameObject* b)
 	}
 }
 #endif D_PIVOT_CNTER
+
